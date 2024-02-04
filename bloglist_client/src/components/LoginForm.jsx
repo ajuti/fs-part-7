@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { loginUser } from "../reducers/userReducer"
 
 const LoginForm = () => {
-  const notification = useSelector(state => state.notification)
-  const user = useSelector(state => state.user)
+  const notification = useSelector((state) => state.notification)
+  const user = useSelector((state) => state.user)
   const dispatch = useDispatch()
 
   const [username, setUsername] = useState("")
@@ -25,7 +25,7 @@ const LoginForm = () => {
   return (
     <>
       <h2>log in to application</h2>
-      <Notification { ...notification } />
+      <Notification {...notification} />
       <div>
         <form onSubmit={handleLogin}>
           username{" "}
@@ -44,8 +44,9 @@ const LoginForm = () => {
             name="password"
             value={password}
             onChange={({ target }) => setPassword(target.value)}
-          /><br/>
-         <input type="submit" id="login" value="login" />
+          />
+          <br />
+          <input type="submit" id="login" value="login" />
         </form>
       </div>
     </>

@@ -3,6 +3,7 @@ import App from "./App"
 import "./index.css"
 import store from "./store"
 import { Provider } from "react-redux"
+import { BrowserRouter as Router } from "react-router-dom"
 
 /**
  * Provider is used to 'provide' the store to its children.
@@ -10,7 +11,9 @@ import { Provider } from "react-redux"
  */
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <Provider store={store}>
-    <App />
-  </Provider> 
+  <Router>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </Router>,
 )

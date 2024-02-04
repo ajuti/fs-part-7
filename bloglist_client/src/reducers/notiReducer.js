@@ -1,11 +1,11 @@
 /* Import createSlice that 'slices' a part of a store to a select action/element */
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = { text: null, type: "notification" }
 
-/* create a slice for notification's state 
-*  Requires name, initial state, and reducers (functions that modify the state itself)
-*/
+/* create a slice for notification's state
+ *  Requires name, initial state, and reducers (functions that modify the state itself)
+ */
 const notiSlice = createSlice({
   name: "notification",
   initialState,
@@ -13,7 +13,7 @@ const notiSlice = createSlice({
     setNoti(state, action) {
       return action.payload
     },
-  }
+  },
 })
 
 /*
@@ -24,7 +24,7 @@ const notiSlice = createSlice({
 */
 
 export const setNotification = (text, type, seconds) => {
-  return async(dispatch) => {
+  return async (dispatch) => {
     dispatch(setNoti({ text, type }))
     setTimeout(() => {
       dispatch(setNoti(null))

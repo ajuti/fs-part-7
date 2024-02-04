@@ -13,6 +13,7 @@ const create = async (newBlog) => {
   }
 
   const response = await axios.post(baseUrl, newBlog, config)
+  console.log(response)
   return response.data
 }
 
