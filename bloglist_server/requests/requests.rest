@@ -34,3 +34,12 @@ Content-Type: application/json
   "username": "ajuti",
   "password": "sekret"
 }
+
+###
+
+POST http://localhost:3003/api/blogs/65c0b7ba34275d50bee92eec/comments 
+Content-Type: application/json
+
+{
+  "comment": "moi"
+}

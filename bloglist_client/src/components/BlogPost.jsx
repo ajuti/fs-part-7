@@ -3,6 +3,7 @@ import { useMatch } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { likeSingleBlog, deleteSingleBlog } from "../reducers/blogReducer"
 import { useNavigate } from "react-router-dom"
+import { addOneComment } from "../reducers/blogReducer"
 
 const BlogPost = ({ user }) => {
   const dispatch = useDispatch()
@@ -29,6 +30,12 @@ const BlogPost = ({ user }) => {
     }
   }
 
+  const addComment = async(event) => {
+    event.preventDefault()
+    dispatch(addOneComment(event.target.comment.value, blog))
+    event.target.comment.value = null
+  }
+
   return (
     <>
       <Header />
@@ -39,6 +46,16 @@ const BlogPost = ({ user }) => {
         added by {blog.user.name}<br/>
         {blog.user.username === user.username && <button onClick={() => handleDelete(blog)}>remove</button>}
       </div>
+      <h4>comments</h4>
+      <form onSubmit={addComment}>
+        <input type="text" name="comment" />
+        <button>add comment</button>
+      </form>
+      <ul>
+        {blog.comments.map(comment => 
+          <li>{comment}</li>   
+        )}
+      </ul>
     </>
   )
 }

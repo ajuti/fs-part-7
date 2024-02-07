@@ -43,6 +43,17 @@ blogRouter.post("/", async(req, res) => {
   res.status(201).json(populated[0])
 })
 
+blogRouter.post("/:id/comments", async(req, res) => {
+  const { comment } = req.body
+  const id = req.params.id
+  const blog = await Blog.findById(id).populate("user")
+  blog.comments = blog.comments.concat(comment)
+
+  await blog.save()
+
+  res.status(200).json(blog)
+})
+
 blogRouter.delete("/:id", async(req, res) => {
   const id = req.params.id
   const blog = await Blog.findById({ _id: id })
