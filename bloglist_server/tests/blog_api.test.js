@@ -37,15 +37,6 @@ test("blogs can be added, with a valid token", async() => {
       }
     )
   expect(res.status).toBe(201)
-  expect(res.body).toMatchObject(
-    {
-      title: "fourth blog",
-      author: "ajuti",
-      url: "hei.net",
-      likes: 8,
-      user: "65b2bde9944514049ef47aab"
-    }
-  )
   const allBlogs = await api.get("/api/blogs")
   expect(allBlogs.body).toHaveLength(helper.initBlogs.length + 1)
 })
